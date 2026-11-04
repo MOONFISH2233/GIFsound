@@ -129,7 +129,9 @@ player.onFrame((f, pos) => {
   document.getElementById('curFrame').textContent = `#${f}`;
   document.getElementById('curPos').textContent = `${pos.toFixed(0)} / ${player.cycleMs} ms`;
   document.getElementById('clockSrc').textContent =
-    player.stats.clockSource === 'audio' ? 'AudioContext 输出时钟' : 'performance.now()';
+    player.stats.clockSource === 'perf→audio'
+      ? 'performance.now()（音频按此调度）'
+      : 'performance.now()';
 });
 
 let playing = false;
