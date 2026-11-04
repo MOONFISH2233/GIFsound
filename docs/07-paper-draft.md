@@ -27,8 +27,12 @@ audio-visual synchronization: with the only anchor a page can obtain
 (Chromium/Firefox; P95 error 110 ms, max 140 ms), while an oracle phase yields
 0% / 4%. Finally, we evaluate a self-rendered alternative that owns the clock,
 achieving bounded switch latency (26.0 ms, compensable to 4.4 ms) and exact
-mid-stream audio join. We conclude that portable, deterministic A/V
-synchronization over animated images requires the page to own the render clock.
+mid-stream audio join. A survey of mobile and desktop APIs (documented in §7,
+literature only) shows the same fragmentation off the Web: iOS UIKit's public
+model cannot represent per-frame delays at all, Android honors them but exposes
+no current-frame API, and only macOS AppKit both honors and exposes them. We
+conclude that portable, deterministic A/V synchronization over animated images
+requires the renderer to own the render clock.
 
 **中文摘要**
 
@@ -39,6 +43,8 @@ synchronization over animated images requires the page to own the render clock.
 同一页面中，`<video>` 有 `currentTime` 与 `requestVideoFrameCallback`，
 CSS 动画有 `currentTime`，说明这是 API 空白而非渲染限制。
 我们进一步量化了该空白对音画同步的代价，并评估了一种「自己拥有时钟」的自绘替代方案。
+文献调研（§7）显示同一现象在 Web 之外同样存在：iOS UIKit 的公开模型根本
+无法表达逐帧时长，Android 遵守逐帧时长却不暴露当前帧，只有 macOS AppKit 两者兼备。
 
 **关键词**：动画 GIF；帧可观测性；音画同步；Web API；浏览器一致性
 
@@ -273,7 +279,43 @@ WebKit 的取值单调递增且与动画同步推进，确认是**当前帧**而
 
 ---
 
-## 7. 讨论
+## 7. 跨平台考察（文献调研，非实测）
+
+> **本节全部来自官方文档与源码，未在真机上验证。写作时必须标明这一点。**
+
+浏览器不是唯一的播放环境。我们调研了移动端与桌面端的公开 API，发现同一现象以不同形态出现：
+
+| 环境 | 能否知道「现在第几帧」 | 是否遵守逐帧时长 |
+|---|---|---|
+| Chromium / Firefox | 否 | 是 |
+| WebKit | `createImageBitmap` 可读（未定义行为） | 是 |
+| **iOS UIKit** | **否** | **否**（模型只有「帧数组 + 单一总时长」） |
+| macOS AppKit | 只读属性键 `currentFrame` | 是 |
+| **Android framework** | **否**（仅 start/end 回调；需第三方库） | 是 |
+
+三点观察：
+
+1. **iOS UIKit 的公开模型无法表达逐帧时长。** `UIImage` 只有 `images` 与一个
+   `duration`；`UIImageView.animationDuration` 是整轮动画的总时长，默认「帧数 × 1/30 秒」。
+   第三方库 FLAnimatedImage 把「Honors variable frame delays」列为核心卖点，
+   反向印证了原生路径不支持可变帧延迟。
+
+   > 限定：Apple 文档未逐字说明「平均分配」，此结论由 API 形状推得。
+
+2. **macOS AppKit 相反**：`NSImageView.animates` 的文档明确写着按图像数据中存储的
+   timing 播放，且 `NSBitmapImageRep` 提供 `currentFrame` 只读属性键。
+   **同一个 Apple 的两个平台给出了不同答案。**
+
+3. **Android 遵守时序但读不到位置**：Skia 的 GIF reader 将 GCE delay 解析为
+   `delay × 10 ms` 并驱动 `AnimatedImageDrawable`；但后者只暴露
+   `onAnimationStart` / `onAnimationEnd`，没有当前帧索引、seek 或逐帧回调。
+
+**这组事实支持一个更强的判断**：动画图像缺少的不是某个实现的某个功能，
+而是一份**明确的播放语义契约**。四个平台给出四种模型，说明这个契约从来没有被写下过。
+
+---
+
+## 8. 讨论
 
 ### 7.1 何时该用哪种架构
 
@@ -297,7 +339,7 @@ WebKit 的取值单调递增且与动画同步推进，确认是**当前帧**而
 
 ---
 
-## 8. 局限
+## 9. 局限
 
 1. **浏览器版本单一**：Chromium 151、Firefox 153、Playwright WebKit（Windows 自编译版）。
    **「WebKit 如此」不等于「Safari 如此」**。
@@ -307,12 +349,13 @@ WebKit 的取值单调递增且与动画同步推进，确认是**当前帧**而
 4. **无感知实验**：45 ms / 125 ms 阈值引自文献。
 5. **B1 的对比条件偏向它**：测试页只有一个 `<img>`，`img.onload` 几乎就是动画起点；
    真实页面（字体、布局、冷缓存）会更差，但本文未测。
-6. **未测移动端与桌面播放器**（见 `06-cross-platform.md`）。
-7. **扩展剥离只测了 ffmpeg**。
+6. **跨平台部分（§7）完全是文献/源码调研，没有真机实测。**
+   若审稿人要求验证，需要补 iOS 与 Android 实验（见 `06-cross-platform.md`）。
+7. **扩展剥离只测了 ffmpeg**；gifsicle 与 ImageMagick 的行为来自文档与源码，未实测。
 
 ---
 
-## 9. 结论
+## 10. 结论
 
 动画图像的帧可观测性是一处规范空白，且已经造成了引擎间的实际分裂。
 其后果不是「同步做得不够准」，而是「同步无法在不知道当前帧的前提下成立」。
