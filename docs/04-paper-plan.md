@@ -98,7 +98,9 @@
 | 实验 | 指标 | 结果 | 脚本 |
 |---|---|---|---|
 | `<img>` 兼容性 | 加载/动画/帧数/时长 | 全部正常 | `tools/measure-native.js` |
-| 可观测性 | `drawImage` 连续取帧 | 恒为首帧 | 见技术报告 §3.2 |
+| **可观测性（3 引擎 × 3 格式）** | `drawImage` / `createImageBitmap` | `drawImage` 三家均首帧；`createImageBitmap` **仅 WebKit 返回当前帧** | `tools/probe-observability.js` |
+| **对照实验** | `<video>` / CSS 动画 / 动画图像 | 6/6、6/6、0（WebKit 例外） | `tools/probe-controls.js` |
+| **分发链路** | 重编码后延迟/扩展幸存 | 延迟全部幸存；扩展全部剥离 | `tools/test-distribution.js` |
 | 原生周期精度 | 周期均值/标准差 | 3999.95 / 0.25 ms | `results/native-chromium.json` |
 | B1-oracle | 平均/最大误差 | 0 / 0 ms | 同上 |
 | B1-realistic | 错配率/P95/最大 | 10.0% / 110 / 140 ms | 同上 |

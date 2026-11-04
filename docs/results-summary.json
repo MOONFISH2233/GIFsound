@@ -1,9 +1,12 @@
 {
-  "note": "Summary only. Raw per-sample data is regenerable via tools/measure-*.js and tools/probe-*.js",
+  "note": "Summary only. Raw per-sample data regenerable via tools/*.js",
   "generated": "2026-11-04",
-  "runs": {
+  "experiments": {
     "controls": {
       "see": "results/controls.json"
+    },
+    "distribution": {
+      "see": "results/distribution.json"
     },
     "native-chromium-hide": {
       "browser": "chromium",
@@ -51,32 +54,535 @@
         "lagAtResumeMs": 7.52
       }
     },
+    "native-chromium-stress": {
+      "browser": "chromium",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "stress": true,
+      "durationMs": 14000,
+      "samples": 162,
+      "sampleIntervalMs": 99.76,
+      "distinctFramesObserved": 40,
+      "observedCycleMs": 3998.78,
+      "observedCycleCount": 3,
+      "cycleDriftMs": -1.22,
+      "cycleStdDevMs": 1.84,
+      "bestPhaseMs": 3948,
+      "evaluatedSamples": 159,
+      "mismatchRate": 0,
+      "meanAbsErrMs": 0,
+      "p95AbsErrMs": 0,
+      "maxAbsErrMs": 0,
+      "firstHalfMeanErrMs": 0,
+      "secondHalfMeanErrMs": 0,
+      "errorSeries": [
+        {
+          "t": 298,
+          "est": 3,
+          "actual": 3,
+          "errMs": 0
+        },
+        {
+          "t": 494,
+          "est": 5,
+          "actual": 5,
+          "errMs": 0
+        },
+        {
+          "t": 675,
+          "est": 7,
+          "actual": 7,
+          "errMs": 0
+        },
+        {
+          "t": 871,
+          "est": 9,
+          "actual": 9,
+          "errMs": 0
+        },
+        {
+          "t": 1098,
+          "est": 11,
+          "actual": 11,
+          "errMs": 0
+        },
+        {
+          "t": 1294,
+          "est": 13,
+          "actual": 13,
+          "errMs": 0
+        },
+        {
+          "t": 1476,
+          "est": 15,
+          "actual": 15,
+          "errMs": 0
+        },
+        {
+          "t": 1671,
+          "est": 17,
+          "actual": 17,
+          "errMs": 0
+        },
+        {
+          "t": 1898,
+          "est": 19,
+          "actual": 19,
+          "errMs": 0
+        },
+        {
+          "t": 2097,
+          "est": 21,
+          "actual": 21,
+          "errMs": 0
+        },
+        {
+          "t": 2279,
+          "est": 23,
+          "actual": 23,
+          "errMs": 0
+        },
+        {
+          "t": 2474,
+          "est": 25,
+          "actual": 25,
+          "errMs": 0
+        },
+        {
+          "t": 2702,
+          "est": 27,
+          "actual": 27,
+          "errMs": 0
+        },
+        {
+          "t": 2898,
+          "est": 29,
+          "actual": 29,
+          "errMs": 0
+        },
+        {
+          "t": 3083,
+          "est": 31,
+          "actual": 31,
+          "errMs": 0
+        },
+        {
+          "t": 3263,
+          "est": 33,
+          "actual": 33,
+          "errMs": 0
+        },
+        {
+          "t": 3506,
+          "est": 35,
+          "actual": 35,
+          "errMs": 0
+        },
+        {
+          "t": 3702,
+          "est": 37,
+          "actual": 37,
+          "errMs": 0
+        },
+        {
+          "t": 3883,
+          "est": 39,
+          "actual": 39,
+          "errMs": 0
+        },
+        {
+          "t": 4064,
+          "est": 1,
+          "actual": 1,
+          "errMs": 0
+        },
+        {
+          "t": 4292,
+          "est": 3,
+          "actual": 3,
+          "errMs": 0
+        },
+        {
+          "t": 4506,
+          "est": 5,
+          "actual": 5,
+          "errMs": 0
+        },
+        {
+          "t": 4687,
+          "est": 7,
+          "actual": 7,
+          "errMs": 0
+        },
+        {
+          "t": 4867,
+          "est": 9,
+          "actual": 9,
+          "errMs": 0
+        },
+        {
+          "t": 5094,
+          "est": 11,
+          "actual": 11,
+          "errMs": 0
+        },
+        {
+          "t": 5307,
+          "est": 13,
+          "actual": 13,
+          "errMs": 0
+        },
+        {
+          "t": 5488,
+          "est": 15,
+          "actual": 15,
+          "errMs": 0
+        },
+        {
+          "t": 5669,
+          "est": 17,
+          "actual": 17,
+          "errMs": 0
+        },
+        {
+          "t": 5896,
+          "est": 19,
+          "actual": 19,
+          "errMs": 0
+        },
+        {
+          "t": 6092,
+          "est": 21,
+          "actual": 21,
+          "errMs": 0
+        },
+        {
+          "t": 6288,
+          "est": 23,
+          "actual": 23,
+          "errMs": 0
+        },
+        {
+          "t": 6470,
+          "est": 25,
+          "actual": 25,
+          "errMs": 0
+        },
+        {
+          "t": 6699,
+          "est": 27,
+          "actual": 27,
+          "errMs": 0
+        },
+        {
+          "t": 6896,
+          "est": 29,
+          "actual": 29,
+          "errMs": 0
+        },
+        {
+          "t": 7077,
+          "est": 31,
+          "actual": 31,
+          "errMs": 0
+        },
+        {
+          "t": 7259,
+          "est": 33,
+          "actual": 33,
+          "errMs": 0
+        },
+        {
+          "t": 7500,
+          "est": 35,
+          "actual": 35,
+          "errMs": 0
+        },
+        {
+          "t": 7699,
+          "est": 37,
+          "actual": 37,
+          "errMs": 0
+        },
+        {
+          "t": 7881,
+          "est": 39,
+          "actual": 39,
+          "errMs": 0
+        },
+        {
+          "t": 8062,
+          "est": 1,
+          "actual": 1,
+          "errMs": 0
+        },
+        {
+          "t": 8304,
+          "est": 3,
+          "actual": 3,
+          "errMs": 0
+        },
+        {
+          "t": 8501,
+          "est": 5,
+          "actual": 5,
+          "errMs": 0
+        },
+        {
+          "t": 8684,
+          "est": 7,
+          "actual": 7,
+          "errMs": 0
+        },
+        {
+          "t": 8868,
+          "est": 9,
+          "actual": 9,
+          "errMs": 0
+        },
+        {
+          "t": 9095,
+          "est": 11,
+          "actual": 11,
+          "errMs": 0
+        },
+        {
+          "t": 9304,
+          "est": 13,
+          "actual": 13,
+          "errMs": 0
+        },
+        {
+          "t": 9489,
+          "est": 15,
+          "actual": 15,
+          "errMs": 0
+        },
+        {
+          "t": 9671,
+          "est": 17,
+          "actual": 17,
+          "errMs": 0
+        },
+        {
+          "t": 9900,
+          "est": 19,
+          "actual": 19,
+          "errMs": 0
+        },
+        {
+          "t": 10098,
+          "est": 21,
+          "actual": 21,
+          "errMs": 0
+        },
+        {
+          "t": 10280,
+          "est": 23,
+          "actual": 23,
+          "errMs": 0
+        },
+        {
+          "t": 10460,
+          "est": 25,
+          "actual": 25,
+          "errMs": 0
+        },
+        {
+          "t": 10704,
+          "est": 27,
+          "actual": 27,
+          "errMs": 0
+        },
+        {
+          "t": 10902,
+          "est": 29,
+          "actual": 29,
+          "errMs": 0
+        },
+        {
+          "t": 11085,
+          "est": 31,
+          "actual": 31,
+          "errMs": 0
+        },
+        {
+          "t": 11267,
+          "est": 33,
+          "actual": 33,
+          "errMs": 0
+        },
+        {
+          "t": 11495,
+          "est": 35,
+          "actual": 35,
+          "errMs": 0
+        },
+        {
+          "t": 11695,
+          "est": 37,
+          "actual": 37,
+          "errMs": 0
+        },
+        {
+          "t": 11877,
+          "est": 39,
+          "actual": 39,
+          "errMs": 0
+        },
+        {
+          "t": 12059,
+          "est": 1,
+          "actual": 1,
+          "errMs": 0
+        },
+        {
+          "t": 12300,
+          "est": 3,
+          "actual": 3,
+          "errMs": 0
+        },
+        {
+          "t": 12497,
+          "est": 5,
+          "actual": 5,
+          "errMs": 0
+        },
+        {
+          "t": 12679,
+          "est": 7,
+          "actual": 7,
+          "errMs": 0
+        },
+        {
+          "t": 12862,
+          "est": 9,
+          "actual": 9,
+          "errMs": 0
+        },
+        {
+          "t": 13106,
+          "est": 11,
+          "actual": 11,
+          "errMs": 0
+        },
+        {
+          "t": 13301,
+          "est": 13,
+          "actual": 13,
+          "errMs": 0
+        },
+        {
+          "t": 13483,
+          "est": 15,
+          "actual": 15,
+          "errMs": 0
+        },
+        {
+          "t": 13666,
+          "est": 17,
+          "actual": 17,
+          "errMs": 0
+        },
+        {
+          "t": 13894,
+          "est": 19,
+          "actual": 19,
+          "errMs": 0
+        },
+        {
+          "t": 14104,
+          "est": 21,
+          "actual": 21,
+          "errMs": 0
+        },
+        {
+          "t": 14287,
+          "est": 23,
+          "actual": 23,
+          "errMs": 0
+        },
+        {
+          "t": 14471,
+          "est": 25,
+          "actual": 25,
+          "errMs": 0
+        },
+        {
+          "t": 14699,
+          "est": 27,
+          "actual": 27,
+          "errMs": 0
+        },
+        {
+          "t": 14894,
+          "est": 29,
+          "actual": 29,
+          "errMs": 0
+        },
+        {
+          "t": 15076,
+          "est": 31,
+          "actual": 31,
+          "errMs": 0
+        },
+        {
+          "t": 15260,
+          "est": 33,
+          "actual": 33,
+          "errMs": 0
+        },
+        {
+          "t": 15502,
+          "est": 35,
+          "actual": 35,
+          "errMs": 0
+        },
+        {
+          "t": 15699,
+          "est": 37,
+          "actual": 37,
+          "errMs": 0
+        },
+        {
+          "t": 15879,
+          "est": 39,
+          "actual": 39,
+          "errMs": 0
+        },
+        {
+          "t": 16061,
+          "est": 1,
+          "actual": 1,
+          "errMs": 0
+        }
+      ]
+    },
     "native-chromium": {
       "browser": "chromium",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
-      "durationMs": 16000,
+      "durationMs": 60000,
       "hidden": false,
-      "samples": 960,
+      "samples": 3600,
       "sampleIntervalMs": 16.67,
       "distinctFramesObserved": 40,
-      "observedCycleMs": 3999.95,
-      "observedCycleCount": 3,
-      "cycleDriftMs": -0.05,
-      "cycleStdDevMs": 0.25,
-      "phaseOffsetFromLoadMs": 40.67,
+      "observedCycleMs": 3999.67,
+      "observedCycleCount": 14,
+      "cycleDriftMs": -0.33,
+      "cycleStdDevMs": 0.78,
+      "phaseOffsetFromLoadMs": 32.18,
       "b1Oracle": {
-        "samples": 950,
-        "mismatchRate": 0,
-        "meanAbsErrMs": 0,
+        "samples": 3589,
+        "mismatchRate": 0.01,
+        "meanAbsErrMs": 0.53,
         "p95AbsErrMs": 0,
-        "maxAbsErrMs": 0
+        "maxAbsErrMs": 100
       },
       "b1Realistic": {
-        "samples": 950,
-        "mismatchRate": 0.1,
-        "meanAbsErrMs": 10.94,
-        "p95AbsErrMs": 110,
-        "maxAbsErrMs": 140
+        "samples": 3589,
+        "mismatchRate": 0,
+        "meanAbsErrMs": 0.39,
+        "p95AbsErrMs": 0,
+        "maxAbsErrMs": 110
       }
     },
     "native-firefox": {
@@ -136,233 +642,6 @@
       }
     },
     "observability": {
-      "rawRows": [
-        {
-          "browser": "chromium",
-          "format": "GIF",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 1,
-          "bitmapValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "browser": "chromium",
-          "format": "APNG",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 1,
-          "bitmapValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "browser": "chromium",
-          "format": "WebP",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 1,
-          "bitmapValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "browser": "firefox",
-          "format": "GIF",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 1,
-          "bitmapValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "browser": "firefox",
-          "format": "APNG",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 1,
-          "bitmapValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "browser": "firefox",
-          "format": "WebP",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 1,
-          "bitmapValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ]
-        },
-        {
-          "browser": "webkit",
-          "format": "GIF",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 7,
-          "bitmapValues": [
-            23,
-            25,
-            27,
-            29,
-            31,
-            33,
-            35
-          ]
-        },
-        {
-          "browser": "webkit",
-          "format": "APNG",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 7,
-          "bitmapValues": [
-            24,
-            26,
-            28,
-            29,
-            31,
-            33,
-            35
-          ]
-        },
-        {
-          "browser": "webkit",
-          "format": "WebP",
-          "animatingOnScreen": true,
-          "drawImageDistinctFrames": 1,
-          "drawImageValues": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "bitmapDistinctFrames": 7,
-          "bitmapValues": [
-            23,
-            25,
-            28,
-            30,
-            32,
-            34,
-            36
-          ]
-        }
-      ],
       "see": "results/observability.json"
     },
     "player-chromium-predict0": {
@@ -496,6 +775,298 @@
           "clockSource": "perf→audio"
         }
       }
+    },
+    "trials-chromium": {
+      "browser": "chromium",
+      "trials": 12,
+      "perTrialMs": 8000,
+      "successful": 12,
+      "b1RealisticMismatchRate": {
+        "median": 0.09,
+        "min": 0,
+        "max": 0.12,
+        "p25": 0.07,
+        "p75": 0.11
+      },
+      "b1RealisticMeanErrMs": {
+        "median": 7.5,
+        "min": 0,
+        "max": 12.81
+      },
+      "phaseOffsetFromLoadMs": {
+        "median": 33.17,
+        "min": 26.08,
+        "max": 44.38
+      },
+      "rows": [
+        {
+          "trial": 0,
+          "mismatchRate": 0.11,
+          "meanAbsErrMs": 12.04,
+          "p95AbsErrMs": 110,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.01,
+          "phaseOffsetMs": 26.08,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 1,
+          "mismatchRate": 0.03,
+          "meanAbsErrMs": 2.38,
+          "p95AbsErrMs": 0,
+          "maxAbsErrMs": 100,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 29.58,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 2,
+          "mismatchRate": 0,
+          "meanAbsErrMs": 0,
+          "p95AbsErrMs": 0,
+          "maxAbsErrMs": 0,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 32.96,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 3,
+          "mismatchRate": 0.07,
+          "meanAbsErrMs": 5.68,
+          "p95AbsErrMs": 60,
+          "maxAbsErrMs": 100,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 39.77,
+          "cycleStdDevMs": 0,
+          "samples": 480
+        },
+        {
+          "trial": 4,
+          "mismatchRate": 0.01,
+          "meanAbsErrMs": 0.6,
+          "p95AbsErrMs": 0,
+          "maxAbsErrMs": 100,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 29.59,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 5,
+          "mismatchRate": 0.11,
+          "meanAbsErrMs": 12.17,
+          "p95AbsErrMs": 110,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 26.35,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 6,
+          "mismatchRate": 0.08,
+          "meanAbsErrMs": 6.64,
+          "p95AbsErrMs": 80,
+          "maxAbsErrMs": 100,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 34.74,
+          "cycleStdDevMs": 0,
+          "samples": 480
+        },
+        {
+          "trial": 7,
+          "mismatchRate": 0.12,
+          "meanAbsErrMs": 12.81,
+          "p95AbsErrMs": 110,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 44.38,
+          "cycleStdDevMs": 0,
+          "samples": 480
+        },
+        {
+          "trial": 8,
+          "mismatchRate": 0.08,
+          "meanAbsErrMs": 6.62,
+          "p95AbsErrMs": 80,
+          "maxAbsErrMs": 100,
+          "oracleMismatchRate": 0.02,
+          "phaseOffsetMs": 39.2,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 9,
+          "mismatchRate": 0.1,
+          "meanAbsErrMs": 8.36,
+          "p95AbsErrMs": 90,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 33.39,
+          "cycleStdDevMs": 0,
+          "samples": 480
+        },
+        {
+          "trial": 10,
+          "mismatchRate": 0.11,
+          "meanAbsErrMs": 12.43,
+          "p95AbsErrMs": 110,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 27.75,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        },
+        {
+          "trial": 11,
+          "mismatchRate": 0.1,
+          "meanAbsErrMs": 9.36,
+          "p95AbsErrMs": 90,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0,
+          "phaseOffsetMs": 34.16,
+          "cycleStdDevMs": 0,
+          "samples": 481
+        }
+      ]
+    },
+    "trials-firefox": {
+      "browser": "firefox",
+      "trials": 10,
+      "perTrialMs": 8000,
+      "successful": 10,
+      "b1RealisticMismatchRate": {
+        "median": 0.12,
+        "min": 0.07,
+        "max": 0.13,
+        "p25": 0.09,
+        "p75": 0.13
+      },
+      "b1RealisticMeanErrMs": {
+        "median": 11.1,
+        "min": 7.6,
+        "max": 15.88
+      },
+      "phaseOffsetFromLoadMs": {
+        "median": 23,
+        "min": 9,
+        "max": 37
+      },
+      "rows": [
+        {
+          "trial": 0,
+          "mismatchRate": 0.13,
+          "meanAbsErrMs": 12.3,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.02,
+          "phaseOffsetMs": 32,
+          "cycleStdDevMs": 0,
+          "samples": 256
+        },
+        {
+          "trial": 1,
+          "mismatchRate": 0.09,
+          "meanAbsErrMs": 9.3,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.03,
+          "phaseOffsetMs": 23,
+          "cycleStdDevMs": 0,
+          "samples": 256
+        },
+        {
+          "trial": 2,
+          "mismatchRate": 0.13,
+          "meanAbsErrMs": 12.98,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 200,
+          "oracleMismatchRate": 0.01,
+          "phaseOffsetMs": 25,
+          "cycleStdDevMs": 0,
+          "samples": 275
+        },
+        {
+          "trial": 3,
+          "mismatchRate": 0.13,
+          "meanAbsErrMs": 12.65,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.02,
+          "phaseOffsetMs": 20,
+          "cycleStdDevMs": 0,
+          "samples": 238
+        },
+        {
+          "trial": 4,
+          "mismatchRate": 0.11,
+          "meanAbsErrMs": 10.49,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.02,
+          "phaseOffsetMs": 23,
+          "cycleStdDevMs": 0,
+          "samples": 243
+        },
+        {
+          "trial": 5,
+          "mismatchRate": 0.07,
+          "meanAbsErrMs": 7.6,
+          "p95AbsErrMs": 90,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.02,
+          "phaseOffsetMs": 37,
+          "cycleStdDevMs": 0,
+          "samples": 262
+        },
+        {
+          "trial": 6,
+          "mismatchRate": 0.13,
+          "meanAbsErrMs": 15.88,
+          "p95AbsErrMs": 110,
+          "maxAbsErrMs": 800,
+          "oracleMismatchRate": 0.03,
+          "phaseOffsetMs": 9,
+          "cycleStdDevMs": 0,
+          "samples": 240
+        },
+        {
+          "trial": 7,
+          "mismatchRate": 0.11,
+          "meanAbsErrMs": 10.26,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.03,
+          "phaseOffsetMs": 18,
+          "cycleStdDevMs": 0,
+          "samples": 272
+        },
+        {
+          "trial": 8,
+          "mismatchRate": 0.12,
+          "meanAbsErrMs": 11.7,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.03,
+          "phaseOffsetMs": 23,
+          "cycleStdDevMs": 0,
+          "samples": 271
+        },
+        {
+          "trial": 9,
+          "mismatchRate": 0.09,
+          "meanAbsErrMs": 9.49,
+          "p95AbsErrMs": 100,
+          "maxAbsErrMs": 140,
+          "oracleMismatchRate": 0.04,
+          "phaseOffsetMs": 26,
+          "cycleStdDevMs": 0,
+          "samples": 258
+        }
+      ]
     }
   }
 }

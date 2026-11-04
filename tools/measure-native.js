@@ -281,8 +281,9 @@ async function collectScreenshot(page, durationMs) {
   }
 
   fs.mkdirSync(path.join(ROOT, 'results'), { recursive: true });
+  const suffix = process.env.FRAME_AUD_TAG ? `-${process.env.FRAME_AUD_TAG}` : '';
   const tag = HIDE ? `native-${browserName}-hide` : `native-${browserName}`;
-  const out = path.join(ROOT, 'results', `${tag}.json`);
+  const out = path.join(ROOT, 'results', `${tag}${suffix}.json`);
   fs.writeFileSync(out, JSON.stringify({ result, rawSamples: samples }, null, 2));
 
   console.log(JSON.stringify(result, null, 2));
