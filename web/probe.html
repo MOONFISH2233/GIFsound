@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>observability probe</title></head>
+<body style="margin:0;background:#000">
+<img id="p" style="display:block;width:240px;height:180px;image-rendering:pixelated">
+<script>
+  const src = new URLSearchParams(location.search).get('src') || '/assets/demo.gif';
+  document.getElementById('p').src = src + '?t=' + Date.now();
+</script>
+</body>
+</html>

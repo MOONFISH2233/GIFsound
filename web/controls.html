@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>controls</title>
+<style>
+  body { margin: 0; background: #000; }
+  #box { width: 240px; height: 180px; background: #123; }
+  #box.anim { animation: spin 4s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  video, img { display: block; width: 240px; height: 180px; }
+</style>
+</head>
+<body>
+<video id="v" src="/assets/demo.mp4" muted autoplay loop playsinline></video>
+<div id="box" class="anim"></div>
+<img id="p" src="/assets/demo.gif">
+</body>
+</html>
