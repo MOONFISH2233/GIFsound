@@ -1,0 +1,8 @@
+node_modules/
+assets/*.gif
+assets/*.wav
+results/
+.playwright-mcp/
+*.log
+demo.png
+shot-*.png

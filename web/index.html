@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FRAMEAUD — 帧锚定音频 GIF</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; padding: 32px 20px 64px;
+    background: #0e1014; color: #e6e8ee;
+    font: 15px/1.6 -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: .3px; }
+  .sub { color: #8b93a7; margin: 0 0 28px; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: #161a22; border: 1px solid #232a36; border-radius: 12px;
+    padding: 14px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .card h2 { font-size: 13px; margin: 0; color: #9aa4bb; font-weight: 600; letter-spacing: .4px; text-transform: uppercase; }
+  canvas, img { width: 100%; height: auto; display: block; border-radius: 8px; background: #000; image-rendering: pixelated; }
+  .badge {
+    display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 20px;
+    background: #1d3a2a; color: #6ee7a0; border: 1px solid #2a5a40;
+  }
+  .badge.warn { background: #3a2e1d; color: #f0c674; border-color: #5a4a2a; }
+  .bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 14px; }
+  button {
+    background: #2b6cf6; color: #fff; border: 0; border-radius: 8px;
+    padding: 9px 16px; font-size: 14px; cursor: pointer; font-family: inherit;
+  }
+  button:hover { background: #3b7bff; }
+  button.ghost { background: #232a36; color: #cfd6e4; }
+  button.ghost:hover { background: #2d3644; }
+  button:disabled { opacity: .45; cursor: default; }
+  dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; font-size: 13px; }
+  dt { color: #7f889c; }
+  dd { margin: 0; font-variant-numeric: tabular-nums; color: #dfe4ef; }
+  .note { color: #7f889c; font-size: 13px; margin-top: 22px; }
+  code { background: #1d232e; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>FRAMEAUD — 帧锚定音频 GIF</h1>
+  <p class="sub">同一个 .gif 文件：左边由浏览器原生渲染（无扩展、无声）；右边由 JS 解码器接管，画面与音频共用一把时钟。</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>原生 &lt;img&gt; 渲染</h2>
+      <img id="nativeImg" src="../assets/demo-audio.gif" alt="native gif">
+      <div>
+        <span class="badge" id="nativeStatus">等待加载</span>
+      </div>
+      <dl>
+        <dt>文件大小</dt><dd id="fileSize">—</dd>
+        <dt>说明</dt><dd>浏览器忽略未知扩展块，只显示动画</dd>
+      </dl>
+    </div>
+
+    <div class="card">
+      <h2>JS 同步解码器</h2>
+      <canvas id="canvas" width="240" height="180"></canvas>
+      <div>
+        <span class="badge" id="playerStatus">未开始</span>
+      </div>
+      <dl>
+        <dt>当前帧</dt><dd id="curFrame">—</dd>
+        <dt>时间轴位置</dt><dd id="curPos">—</dd>
+        <dt>时钟源</dt><dd id="clockSrc">—</dd>
+        <dt>协议</dt><dd id="protoInfo">—</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="bar">
+    <button id="btnPlay">播放（含音频）</button>
+    <button id="btnMute" class="ghost">静音</button>
+    <button id="btnRestart" class="ghost">从头</button>
+  </div>
+
+  <p class="note">
+    浏览器不允许无声自动播放带声音的媒体，因此首次点击「播放」时才解锁 <code>AudioContext</code>，
+    并从当前帧对应的音频位置无缝切入。这就是帧锚定映射带来的「热切入」能力：
+    因为播放器自己知道当前在第几帧、处于周期内第几毫秒，切入点是算出来的，不是猜的。
+  </p>
+</div>
+
+<script type="module">
+import { FrameAudPlayer } from './player.js';
+
+const img = document.getElementById('nativeImg');
+const canvas = document.getElementById('canvas');
+const player = new FrameAudPlayer(canvas, { mode: 'canvas' });
+
+let muted = false;
+
+function markNativeLoaded() {
+  document.getElementById('nativeStatus').textContent = '原生动画正常播放';
+  const entry = performance.getEntriesByName(img.src).pop();
+  const bytes = entry?.transferSize || entry?.encodedBodySize || 0;
+  document.getElementById('fileSize').textContent =
+    `${img.naturalWidth}×${img.naturalHeight}` + (bytes ? ` · ${(bytes / 1024).toFixed(0)} KB` : '');
+}
+// 模块脚本可能晚于 img 的 load 事件执行，必须先检查是否已经加载完
+if (img.complete && img.naturalWidth > 0) markNativeLoaded();
+else img.addEventListener('load', markNativeLoaded);
+
+img.addEventListener('error', () => {
+  const el = document.getElementById('nativeStatus');
+  el.textContent = '加载失败';
+  el.className = 'badge warn';
+});
+
+player.load('../assets/demo-audio.gif').then(() => {
+  const m = player.manifest;
+  document.getElementById('protoInfo').innerHTML = m
+    ? `v${m.v} · ${m.frameCount} 帧 · ${m.anchors.length} 锚点 · ${(m.audio.byteLength / 1024).toFixed(0)}KB`
+    : `<span style="color:#f0c674">${player.audioError}</span>`;
+  document.getElementById('playerStatus').textContent = '就绪';
+}).catch(e => {
+  document.getElementById('playerStatus').textContent = '载入失败: ' + e.message;
+});
+
+player.onFrame((f, pos) => {
+  document.getElementById('curFrame').textContent = `#${f}`;
+  document.getElementById('curPos').textContent = `${pos.toFixed(0)} / ${player.cycleMs} ms`;
+  document.getElementById('clockSrc').textContent =
+    player.stats.clockSource === 'audio' ? 'AudioContext 输出时钟' : 'performance.now()';
+});
+
+let playing = false;
+document.getElementById('btnPlay').addEventListener('click', async (e) => {
+  const btn = e.currentTarget;
+  if (playing) {
+    player.pause();
+    playing = false;
+    btn.textContent = '播放（含音频）';
+    document.getElementById('playerStatus').textContent = '已暂停';
+    return;
+  }
+  btn.disabled = true;
+  try {
+    await player.unlockAudio();
+    if (muted) player.setVolume(0);
+    await player.play();
+    playing = true;
+    document.getElementById('playerStatus').textContent = '播放中（已解锁音频）';
+    btn.textContent = '暂停';
+  } catch (err) {
+    document.getElementById('playerStatus').textContent = '解锁失败: ' + err.message;
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+document.getElementById('btnMute').addEventListener('click', (e) => {
+  muted = !muted;
+  player.setVolume(muted ? 0 : 1);
+  e.target.textContent = muted ? '取消静音' : '静音';
+});
+
+document.getElementById('btnRestart').addEventListener('click', () => {
+  player.seek(0);
+});
+</script>
+</body>
+</html>

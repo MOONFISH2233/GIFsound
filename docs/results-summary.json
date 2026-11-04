@@ -1,0 +1,212 @@
+{
+  "note": "Summary only. Raw per-sample data is regenerable via tools/measure-*.js",
+  "generated": "2026-11-04",
+  "runs": {
+    "native-chromium-hide": {
+      "browser": "chromium",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "durationMs": 16000,
+      "hidden": true,
+      "samples": 769,
+      "sampleIntervalMs": 19.29,
+      "distinctFramesObserved": 40,
+      "observedCycleMs": 7999.86,
+      "observedCycleCount": 1,
+      "cycleDriftMs": 3999.86,
+      "cycleStdDevMs": 0,
+      "phaseOffsetFromLoadMs": 25.1,
+      "b1Oracle": {
+        "samples": 758,
+        "mismatchRate": 0,
+        "meanAbsErrMs": 0,
+        "p95AbsErrMs": 0,
+        "maxAbsErrMs": 0
+      },
+      "b1Realistic": {
+        "samples": 758,
+        "mismatchRate": 0.06,
+        "meanAbsErrMs": 4.83,
+        "p95AbsErrMs": 60,
+        "maxAbsErrMs": 100
+      },
+      "perturbation": {
+        "hiddenMs": 2018,
+        "beforeHide": {
+          "samples": 374,
+          "mismatchRate": 0.06,
+          "meanAbsErrMs": 4.65,
+          "p95AbsErrMs": 60,
+          "maxAbsErrMs": 100
+        },
+        "afterShow": {
+          "samples": 375,
+          "mismatchRate": 0.06,
+          "meanAbsErrMs": 5.12,
+          "p95AbsErrMs": 60,
+          "maxAbsErrMs": 100
+        },
+        "lagAtResumeMs": 7.52
+      }
+    },
+    "native-chromium": {
+      "browser": "chromium",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "durationMs": 16000,
+      "hidden": false,
+      "samples": 960,
+      "sampleIntervalMs": 16.67,
+      "distinctFramesObserved": 40,
+      "observedCycleMs": 3999.95,
+      "observedCycleCount": 3,
+      "cycleDriftMs": -0.05,
+      "cycleStdDevMs": 0.25,
+      "phaseOffsetFromLoadMs": 40.67,
+      "b1Oracle": {
+        "samples": 950,
+        "mismatchRate": 0,
+        "meanAbsErrMs": 0,
+        "p95AbsErrMs": 0,
+        "maxAbsErrMs": 0
+      },
+      "b1Realistic": {
+        "samples": 950,
+        "mismatchRate": 0.1,
+        "meanAbsErrMs": 10.94,
+        "p95AbsErrMs": 110,
+        "maxAbsErrMs": 140
+      }
+    },
+    "player-chromium-predict0": {
+      "browser": "chromium",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "durationMs": 14000,
+      "samples": 841,
+      "sampleIntervalMs": 16.66,
+      "displayMatchesAudioTimeline": {
+        "mismatches": 141,
+        "rate": 0.17,
+        "meanAbsErrMs": 16.73,
+        "p95AbsErrMs": 110,
+        "maxAbsErrMs": 140
+      },
+      "frameSwitchLagMs": {
+        "samples": 141,
+        "mean": 25.98,
+        "p95": 31.71,
+        "max": 33.1
+      },
+      "predictMs": 0,
+      "hotJoin": {
+        "frameBefore": 13,
+        "frameAfter": 15,
+        "posBeforeMs": 1346.2000000029802,
+        "posAfterMs": 1587.7000000029802,
+        "audioOffsetMs": 1587.2000000029802,
+        "frameWindowStart": 1490,
+        "frameWindowEnd": 1600,
+        "offsetInFrame": true,
+        "schedulingErrorMs": 5.099999997764826
+      },
+      "clock": {
+        "cycleMs": 4000,
+        "stats": {
+          "frameChanges": 156,
+          "lastFrameChangePerf": 15710.10000000149,
+          "lastFrameDurationMs": 67,
+          "audioStartPerf": 1723.2000000029802,
+          "audioOffsetMs": 1587.2000000029802,
+          "schedulingErrorMs": 5.099999997764826,
+          "clockSource": "perf→audio"
+        }
+      }
+    },
+    "player-chromium-predict27": {
+      "browser": "chromium",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "durationMs": 14000,
+      "samples": 840,
+      "sampleIntervalMs": 16.67,
+      "displayMatchesAudioTimeline": {
+        "mismatches": 106,
+        "rate": 0.13,
+        "meanAbsErrMs": 13.57,
+        "p95AbsErrMs": 110,
+        "maxAbsErrMs": 140
+      },
+      "frameSwitchLagMs": {
+        "samples": 37,
+        "mean": 4.52,
+        "p95": 27.03,
+        "max": 27.44
+      },
+      "predictMs": 27,
+      "hotJoin": {
+        "frameBefore": 13,
+        "frameAfter": 14,
+        "posBeforeMs": 1346.800000000745,
+        "posAfterMs": 1443.199999999255,
+        "audioOffsetMs": 1442.8999999985099,
+        "frameWindowStart": 1400,
+        "frameWindowEnd": 1490,
+        "offsetInFrame": true,
+        "schedulingErrorMs": 5
+      },
+      "clock": {
+        "cycleMs": 4000,
+        "stats": {
+          "frameChanges": 155,
+          "lastFrameChangePerf": 15490,
+          "lastFrameDurationMs": 98.89999999850988,
+          "audioStartPerf": 1573.800000000745,
+          "audioOffsetMs": 1442.8999999985099,
+          "schedulingErrorMs": 5,
+          "clockSource": "perf→audio"
+        }
+      }
+    },
+    "player-chromium": {
+      "browser": "chromium",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
+      "durationMs": 14000,
+      "samples": 840,
+      "sampleIntervalMs": 16.66,
+      "displayMatchesAudioTimeline": {
+        "mismatches": 107,
+        "rate": 0.13,
+        "meanAbsErrMs": 13.71,
+        "p95AbsErrMs": 110,
+        "maxAbsErrMs": 140
+      },
+      "frameSwitchLagMs": {
+        "samples": 37,
+        "mean": 4.43,
+        "p95": 27.04,
+        "max": 27.56
+      },
+      "predictMs": 27,
+      "hotJoin": {
+        "frameBefore": 13,
+        "frameAfter": 15,
+        "posBeforeMs": 1331.5,
+        "posAfterMs": 1576.300000000745,
+        "audioOffsetMs": 1575.9000000022352,
+        "frameWindowStart": 1490,
+        "frameWindowEnd": 1600,
+        "offsetInFrame": true,
+        "schedulingErrorMs": 5.099999997764826
+      },
+      "clock": {
+        "cycleMs": 4000,
+        "stats": {
+          "frameChanges": 156,
+          "lastFrameChangePerf": 15678.199999999255,
+          "lastFrameDurationMs": 65.89999999850988,
+          "audioStartPerf": 1711.1000000014901,
+          "audioOffsetMs": 1575.9000000022352,
+          "schedulingErrorMs": 5.099999997764826,
+          "clockSource": "perf→audio"
+        }
+      }
+    }
+  }
+}
