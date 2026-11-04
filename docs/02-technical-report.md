@@ -130,7 +130,25 @@ WAV 是原型阶段的省事选择。若换 Opus（24 kbps），4 秒音频约 1
 
 脚本：`tools/probe-observability.js`，结果：`results/observability.json`。
 
-> 待补：Firefox / WebKit 的同一组数据（浏览器二进制安装中）。
+### 3.2c 对照：同页面里，其他媒体都是可观测的 ★
+
+为了排除「浏览器就是没法暴露播放状态」这种解释，在同一个页面里放了三种会动的媒体：
+
+| 媒体 | 能读到的播放位置 | 不同取值数 | 相关 API |
+|---|---|---|---|
+| `<video>` | `currentTime` | **6 / 6** | `currentTime`、`requestVideoFrameCallback()` |
+| CSS 动画 | `getAnimations()[0].currentTime` | **6 / 6** | `Element.getAnimations()` |
+| 动画图像 `<img>` | **无** | **0** | 无任何等价 API |
+
+（Chromium，采样 6 次间隔 150ms；`results/controls.json`）
+
+**这证明「不可观测」是浏览器在动画图像上的设计选择，不是渲染管线做不到。**
+
+`<video>` 有 `requestVideoFrameCallback`，能精确到「这一帧什么时候被呈现」；
+CSS 动画能读到任意时刻的 `currentTime`；唯独动画图像连「现在第几帧」都问不出来。
+
+> 待补：Firefox / WebKit 的同一组数据。Playwright 的浏览器二进制下载在本网络环境下超时，
+> 命令：`node D:\npm\node_modules\playwright\cli.js install firefox webkit`。
 
 ### 3.3 原生播放器在空闲时其实很准
 
