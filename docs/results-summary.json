@@ -1,7 +1,11 @@
 {
-  "note": "Summary only. Raw per-sample data is regenerable via tools/measure-*.js",
+  "note": "Summary only. Raw per-sample data is regenerable via tools/measure-*.js and tools/probe-*.js",
   "generated": "2026-11-04",
   "runs": {
+    "controls": {
+      "summary": "see raw arrays",
+      "rows": 2
+    },
     "native-chromium-hide": {
       "browser": "chromium",
       "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36",
@@ -75,6 +79,38 @@
         "p95AbsErrMs": 110,
         "maxAbsErrMs": 140
       }
+    },
+    "native-firefox": {
+      "browser": "firefox",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:153.0) Gecko/20100101 Firefox/153.0",
+      "durationMs": 16000,
+      "hidden": false,
+      "samples": 527,
+      "sampleIntervalMs": 30.26,
+      "distinctFramesObserved": 40,
+      "observedCycleMs": 3998.33,
+      "observedCycleCount": 3,
+      "cycleDriftMs": -1.67,
+      "cycleStdDevMs": 13.12,
+      "phaseOffsetFromLoadMs": 42,
+      "b1Oracle": {
+        "samples": 527,
+        "mismatchRate": 0.04,
+        "meanAbsErrMs": 4.29,
+        "p95AbsErrMs": 0,
+        "maxAbsErrMs": 140
+      },
+      "b1Realistic": {
+        "samples": 527,
+        "mismatchRate": 0.14,
+        "meanAbsErrMs": 13.97,
+        "p95AbsErrMs": 110,
+        "maxAbsErrMs": 140
+      }
+    },
+    "observability": {
+      "summary": "see raw arrays",
+      "rows": 7
     },
     "player-chromium-predict0": {
       "browser": "chromium",

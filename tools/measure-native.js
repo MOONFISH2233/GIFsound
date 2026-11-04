@@ -43,10 +43,14 @@ const URL_BASE = process.env.FRAME_AUD_BASE || 'http://localhost:8080';
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-function readBarcode(png) {
-  // 1:1 截取，坐标直接对应 CSS 像素
-  const sx = png.width / VW;
-  const sy = png.height / VH;
+/**
+ * @param {object} png  解码后的截图
+ * @param {number} baseW  这张截图对应的逻辑宽度（CDP 截整个视口=240，元素截图=240）
+ * @param {number} baseH  对应的逻辑高度（视口=220，元素截图=180）
+ */
+function readBarcode(png, baseW = VW, baseH = VH) {
+  const sx = png.width / baseW;
+  const sy = png.height / baseH;
   let v = 0;
   for (let j = 0; j < BITS; j++) {
     const x = Math.round((j * BLOCK_W + BLOCK_W / 2) * sx);
@@ -144,7 +148,8 @@ async function collectScreenshot(page, durationMs) {
   const t0 = performance.now();
   while (performance.now() - t0 < durationMs) {
     const shot = await probe.screenshot({ type: 'png' });
-    out.push({ epochMs: Date.now(), frame: readBarcode(decodePng(Buffer.from(shot))) });
+    // 元素截图只有图片本身：240×180，不含下方的 ticker
+    out.push({ epochMs: Date.now(), frame: readBarcode(decodePng(Buffer.from(shot)), W, H) });
   }
   return { samples: out, hiddenAt: null, shownAt: null };
 }
